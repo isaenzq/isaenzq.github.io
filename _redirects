@@ -1,3 +1,2 @@
 ## force https redirect to show a 200 status code
 http://isaenzq.com https://isaenzq.com  200!
-https://isaenzq.com/content/1 https://isaenzq.com/content/2  200!
