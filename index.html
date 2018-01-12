@@ -5,13 +5,62 @@
 		<title>Home</title>
 
 		<script>
-		   /* Create a configuration object */
-		   var ss360Config = {
-		      /* Your site id */
-		      siteId: "www.isaenzq.com",
-		      /* The selector to the input field (search box) */
-		      searchBoxSelector: "#searchBox"
-		   };
+			var ss360Config = {
+	        //// required
+	        // your site id
+	        siteId: 'spoonacular.com',
+	        // the selector to the search box(es)
+	        searchBoxSelector: '#searchBox',
+	        //// optional
+	        // the text to show before the search results
+	        searchResultsCaption: 'Search results for your query #QUERY#',
+	        // {'contentBlock':'a selector where the results should be inserted'} or undefined for layover
+	        searchResults: {'contentBlock':'#results'},
+	        // whether to show search suggestions
+	        showSearchSuggestions: true,
+	        // speed of the animations, default: 300ms
+	        animationSpeed: 200,
+	        // minimum number of characters before the suggests shows, default: 3
+	        minChars: 2,
+	        // whether to show images in search suggestions
+	        showImagesSuggestions: true, 
+	        // whether to show links
+	        showResultLink: false,
+	        // whether to show images in search results
+	        showImagesResults: true, 
+	        // the text to display when the text can be corrected
+	        queryCorrectionText: 'Did you mean "#CORRECTION#"?',
+	        // the maximum number of search suggests to be shown [1, 25]
+	        numSuggestions: 8,
+	        // the maximum number of search results to be shown [1,1000]
+	        numResults: 50,
+	        // should results be grouped?
+	        groupResults: true,
+	        // e.g. 'Show more results'
+	        moreResultsButton: 'Show more results', 
+	        // the number of new results to show each time the more results button is pressed, moreResultButton must not be undefined
+	        moreResultsPagingSize: 5, 
+	        // if you want the default CSS styling
+	        defaultCss: true,
+	        // navigation "top", "left", or "none"
+	        navigation: 'top',
+	        // if you only want to search within a certain content group, e.g. ['Articles']
+	        includeContentGroups: [],
+	        // if you only want to exclude a certain content group from the search results, e.g. ['Articles']
+	        excludeContentGroups: [],
+	        // set to function(text) { $(this).closest('form').submit();}
+	        // if you only want suggestions and the form should be submitted on enter
+	        enterCallback: undefined,
+	        // a callback that is triggered before the search is executed, e.g. to catch empty queries
+	        preSearchCallback: function(query) {
+			  // only redirect if we're not already at the result page
+			  if (document.location.href.indexOf("/search.html") == -1) {
+			    document.location.href = "/search.html?ss360Query="+query
+			  }
+			  return true;
+			},
+	        searchResultCallback: undefined
+	    	};
 		</script>
 		<script src="https://sitesearch360.com/cdn/sitesearch360-v9.min.js"></script>
 	</head>
